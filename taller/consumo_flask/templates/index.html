@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Edificios y Departamentos</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+
+  <header>
+    <h1>Gestión Inmobiliaria</h1>
+  </header>
+
+  <section>
+    <h2>Edificios</h2>
+    <table>
+      <thead class="colorceldsprintfa">
+        <tr>
+          <th>Nombre</th>
+          <th>Dirección</th>
+          <th>Ciudad</th>
+          <th>Tipo</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for edificio in edificios %}
+          <tr>
+            <td>{{ edificio.nombre }}</td>
+            <td>{{ edificio.direccion }}</td>
+            <td>{{ edificio.ciudad }}</td>
+            <td>{{ edificio.tipo }}</td>
+          </tr>
+        {% else %}
+          <tr><td colspan="4">No hay edificios registrados</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <a href="{{ url_for('crear_edificio') }}">Crear Edificio</a>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Departamentos</h2>
+    <table>
+      <thead class="colorceldsprintfa">
+        <tr>
+          <th>Propietario</th>
+          <th>Costo</th>
+          <th>Cuartos</th>
+          <th>Edificio</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in departamentos %}
+          <tr>
+            <td>{{ d.nombre_propietario }}</td>
+            <td>${{ d.costo }}</td>
+            <td>{{ d.num_cuartos }}</td>
+            <td>
+              {% set edificio_url = d.edificio %}
+              {% for e in edificios %}
+                {% if e.url == edificio_url %}
+                  {{ e.nombre }}
+                {% endif %}
+              {% endfor %}
+            </td>
+          </tr>
+        {% else %}
+          <tr><td colspan="4">No hay departamentos registrados</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <a href="{{ url_for('crear_departamento') }}">Crear Departamento</a>
+  </section>
+</body>
+</html>

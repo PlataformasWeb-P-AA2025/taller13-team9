@@ -1,0 +1,31 @@
+<body>
+  <header>
+    <h1>Crear Departamento</h1>
+  </header>
+
+  <section>
+    <form method="post" class="miformulario">
+      <label for="nombre_propietario">Propietario:</label><br>
+      <input type="text" name="nombre_propietario" required><br><br>
+
+      <label for="costo">Costo:</label><br>
+      <input type="number" name="costo" step="0.01" required><br><br>
+
+      <label for="num_cuartos">Número de Cuartos:</label><br>
+      <input type="number" name="num_cuartos" required><br><br>
+
+      <label for="edificio">Edificio:</label><br>
+      <select name="edificio" required>
+        <option value="" disabled selected>Seleccione un edificio</option>
+        {% for e in edificios %}
+          <option value="{{ e.url }}">{{ e.nombre }} - {{ e.ciudad }}</option>
+        {% endfor %}
+      </select><br><br>
+
+      <button type="submit">Crear</button>
+    </form>
+  </section>
+
+</body>
+
+<a href="{{ url_for('index') }}">← Volver</a>

@@ -1,0 +1,12 @@
+<h2>Crear Edificio</h2>
+<form method="POST">
+  <input name="nombre" placeholder="Nombre"><br>
+  <input name="direccion" placeholder="Dirección"><br>
+  <input name="ciudad" placeholder="Ciudad"><br>
+  <select name="tipo">
+    <option value="residencial">Residencial</option>
+    <option value="comercial">Comercial</option>
+  </select><br>
+  <button type="submit">Crear</button>
+</form>
+<a href="{{ url_for('index') }}">Volver</a>

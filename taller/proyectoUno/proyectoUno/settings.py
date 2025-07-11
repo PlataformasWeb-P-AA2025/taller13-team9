@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'administrativo',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 AUTHENTICATION_BACKENDS = (

@@ -23,7 +23,11 @@ class EdificioSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class DepartamentoSerializer(serializers.HyperlinkedModelSerializer):
+    edificio = serializers.HyperlinkedRelatedField(
+        queryset=Edificio.objects.all(),
+        view_name='edificio-detail'
+    )
+
     class Meta:
         model = Departamento
-        # fields = ['id', 'telefono', 'tipo']
         fields = '__all__'
